@@ -29,4 +29,7 @@ model Article {
   // This is the other side of the same relation
   createdBy   User?    @relation("UserArticles", fields: [createdById], references: [id])
   createdById String?
+  citations   Json?
+imageIdeas  Json?
+
 }
