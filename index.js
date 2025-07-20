@@ -34,7 +34,7 @@ app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'em
 app.get('/auth/google/callback',
   passport.authenticate('google', { failureRedirect: '/' }),
   (req, res) => {
-    res.redirect('/dashboard'); // or send token/data back to frontend
+    res.redirect('https://ai-newsroom-frontend.vercel.app/dashboard');
   }
 );
 
@@ -44,9 +44,10 @@ app.get('/auth/github', passport.authenticate('github', { scope: ['user:email'] 
 app.get('/auth/github/callback',
   passport.authenticate('github', { failureRedirect: '/' }),
   (req, res) => {
-    res.redirect('/dashboard');
+    res.redirect('https://ai-newsroom-frontend.vercel.app/dashboard');
   }
 );
+
 
 // Logout
 app.get('/logout', (req, res) => {
