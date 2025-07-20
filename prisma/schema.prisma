@@ -8,22 +8,25 @@ datasource db {
 }
 
 model User {
-  id         String    @id @default(uuid())
-  name       String?
-  email      String?   @unique
-  imageUrl   String?
-  provider   String?
-  providerId String?
-  createdAt  DateTime  @default(now())
-  articles   Article[] @relation("UserArticles")
+  id        String    @id @default(cuid())
+  name      String
+  email     String    @unique
+  imageUrl  String?
+  createdAt DateTime  @default(now())
+
+  // This is one side of the relation
+  articles  Article[] @relation("UserArticles")
 }
 
 model Article {
-  id          String   @id @default(uuid())
+  id          String   @id @default(cuid())
   title       String
   notes       String
   category    String
-  createdById String
-  createdBy   User     @relation("UserArticles", fields: [createdById], references: [id])
+  content     String
   createdAt   DateTime @default(now())
+
+  // This is the other side of the same relation
+  createdBy   User?    @relation("UserArticles", fields: [createdById], references: [id])
+  createdById String?
 }
