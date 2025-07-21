@@ -10,7 +10,7 @@ import passport from './config/passport.js'; // Adjust the path if needed
 
 const app = express();
 app.use(session({
-  secret: 'super-secret-key', // Change this in production
+  secret: 'anshul',
   resave: false,
   saveUninitialized: false,
 }));
